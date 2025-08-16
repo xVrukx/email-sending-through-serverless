@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Serverless Offline",
+      "type": "shell",
+      "command": "powershell -ExecutionPolicy Bypass -Command \"npx serverless offline\"",
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "pattern": ".",
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".*",
+            "endsPattern": "Server ready"
+          }
+        }
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}

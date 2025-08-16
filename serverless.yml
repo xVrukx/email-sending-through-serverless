@@ -1,0 +1,24 @@
+service: emailsendingserverlessapiproject
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: ap-south-1
+  environment:
+    EMAIL_HOST: ${env:EMAIL_host}
+    EMAIL_PORT: ${env:EMAIL_port}
+    EMAIL_NAME: ${env:EMAIL_name}
+    EMAIL_PASSWORD: ${env:EMAIL_password}
+
+functions:
+  send_email:
+    handler: main.helper
+    timeout: 40
+    events:
+      - http:
+          path: send
+          method: post
+          cors: true
+
+plugins:
+  - serverless-offline
